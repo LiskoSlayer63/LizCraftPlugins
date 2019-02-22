@@ -23,6 +23,7 @@ public class IPetroleumDataProvider extends WailaDataProvider
 	@Override
 	public List<String> getBody(ItemStack stack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config)
     {
+		currenttip.add(accessor.getNBTData().toString());
 		TileEntity tile = accessor.getTileEntity();
 		
 		// Auto Lubricator

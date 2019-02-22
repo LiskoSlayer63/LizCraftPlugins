@@ -20,7 +20,6 @@ public class WailaRegistrar
 	        try 
 	        {
 	        	registrar.registerBodyProvider(new IEngineeringDataProvider(), TileEntity.class);
-	        	//registrar.registerNBTProvider(new IEngineeringDataProvider(), Entity.class);
 	            CLogger.info("Loaded addon for Immersive Engineering");
 	        }
 	        catch (Exception e) 
@@ -34,7 +33,6 @@ public class WailaRegistrar
 	        try 
 	        {
 	        	registrar.registerBodyProvider(new IPetroleumDataProvider(), TileEntity.class);
-	        	//registrar.registerNBTProvider(new IPetroleumDataProvider(), Entity.class);
 	            CLogger.info("Loaded addon for Immersive Petroleum");
 	        }
 	        catch (Exception e) 
@@ -48,7 +46,6 @@ public class WailaRegistrar
 	        try 
 	        {
 	        	registrar.registerBodyProvider(new ITechDataProvider(), TileEntity.class);
-	        	//registrar.registerNBTProvider(new ITechDataProvider(), TileEntity.class);
 	            CLogger.info("Loaded addon for Immersive Tech");
 	        }
 	        catch (Exception e) 
