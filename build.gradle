@@ -1,0 +1,50 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url = "http://files.minecraftforge.net/maven" }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+repositories {
+    maven {url "http://tehnut.info/maven"}
+    maven {
+        name 'jared maven'
+        url 'http://blamejared.com/maven'
+    }
+}
+
+group= "liznet.lizcraftplugins"
+version = "0.1.1"
+archivesBaseName = "LizCraftPlugins"
+
+minecraft {
+    version = "1.12.2-14.23.5.2768"
+    runDir = "run"
+    mappings = "stable_39"
+}
+
+dependencies {
+	deobfCompile "mcp.mobius.waila:Hwyla:1.8.26-B41_1.12.2"
+    deobfCompile "blusunrize:ImmersiveEngineering:0.12-+"
+    compile files("libs/ImmersivePetroleum.jar")
+    compile files("libs/ImmersiveTech.jar")
+}
+
+processResources
+{
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+    
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}

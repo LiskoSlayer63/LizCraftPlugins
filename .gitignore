@@ -1,0 +1,9 @@
+/.settings/
+/.gradle/
+/bin/
+/run/
+/build/
+openCmd.bat
+*.launch
+.project
+.classpath

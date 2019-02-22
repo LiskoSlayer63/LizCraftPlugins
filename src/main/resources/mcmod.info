@@ -1,0 +1,10 @@
+[
+{
+  "modid": "lizcraftplugins",
+  "name": "LizCraft Plugins",
+  "description": "Various tweaks.",
+  "version": "0.0.1",
+  "mcversion": "1.12.2",
+  "authorList": ["LizNet", "LiskoSlayer63"]
+}
+]
