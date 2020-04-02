@@ -2,6 +2,7 @@ package liznet.lizcraftplugins.waila;
 
 import liznet.lizcraftplugins.CLogger;
 import mcp.mobius.waila.api.IWailaRegistrar;
+import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
@@ -19,7 +20,11 @@ public class WailaRegistrar
 	   	{
 	        try 
 	        {
-	        	registrar.registerBodyProvider(new IEngineeringDataProvider(), TileEntity.class);
+	        	WailaDataProvider provider = new IEngineeringDataProvider();
+	        	registrar.registerHeadProvider(provider, TileEntity.class);
+	        	registrar.registerBodyProvider(provider, TileEntity.class);
+	        	registrar.registerTailProvider(provider, TileEntity.class);
+	        	
 	            CLogger.info("Loaded addon for Immersive Engineering");
 	        }
 	        catch (Exception e) 
@@ -32,7 +37,16 @@ public class WailaRegistrar
 	   	{
 	        try 
 	        {
-	        	registrar.registerBodyProvider(new IPetroleumDataProvider(), TileEntity.class);
+	        	WailaDataProvider dProvider = new IPetroleumDataProvider();
+	        	registrar.registerHeadProvider(dProvider, TileEntity.class);
+	        	registrar.registerBodyProvider(dProvider, TileEntity.class);
+	        	registrar.registerTailProvider(dProvider, TileEntity.class);
+	        	
+	        	WailaEntityProvider eProvider = new IPetroleumEntityProvider();
+	        	registrar.registerHeadProvider(eProvider, Entity.class);
+	        	registrar.registerBodyProvider(eProvider, Entity.class);
+	        	registrar.registerTailProvider(eProvider, Entity.class);
+	        	
 	            CLogger.info("Loaded addon for Immersive Petroleum");
 	        }
 	        catch (Exception e) 
@@ -45,12 +59,16 @@ public class WailaRegistrar
 	   	{
 	        try 
 	        {
-	        	registrar.registerBodyProvider(new ITechDataProvider(), TileEntity.class);
-	            CLogger.info("Loaded addon for Immersive Tech");
+	        	WailaDataProvider provider = new ITechnologyDataProvider();
+	        	registrar.registerHeadProvider(provider, TileEntity.class);
+	        	registrar.registerBodyProvider(provider, TileEntity.class);
+	        	registrar.registerTailProvider(provider, TileEntity.class);
+	        	
+	            CLogger.info("Loaded addon for Immersive Technology");
 	        }
 	        catch (Exception e) 
 	        {
-	            CLogger.error("Error while loading addon for Immersive Tech");
+	            CLogger.error("Error while loading addon for Immersive Technology");
 	            e.printStackTrace(System.err);
 	        }
 	   	}

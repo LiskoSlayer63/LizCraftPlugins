@@ -1,0 +1,15 @@
+{
+    "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+			"item": "bopadditions:ruby_boots"
+		},
+        {
+			"item": "minecraft:wool",
+			"data": 32767
+		}
+    ],
+    "result": {
+        "item": "lizcraftplugins:ruby_longfallboots"
+    }
+}

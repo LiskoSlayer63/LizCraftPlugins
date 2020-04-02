@@ -2,6 +2,7 @@ package liznet.lizcraftplugins.waila;
 
 import java.util.List;
 
+import blusunrize.immersiveengineering.api.tool.BelljarHandler.IPlantHandler;
 import blusunrize.immersiveengineering.common.blocks.metal.TileEntityBelljar;
 import blusunrize.immersiveengineering.common.blocks.metal.TileEntityChargingStation;
 import blusunrize.immersiveengineering.common.blocks.metal.TileEntityDieselGenerator;
@@ -23,6 +24,12 @@ import net.minecraftforge.fluids.FluidTank;
 
 public class IEngineeringDataProvider extends WailaDataProvider
 {
+	@Override
+	public List<String> getHead(ItemStack stack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config)
+	{
+		return currenttip;
+	}
+	
 	@Override
 	public List<String> getBody(ItemStack stack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config)
     {
@@ -50,16 +57,49 @@ public class IEngineeringDataProvider extends WailaDataProvider
 
 		// Refinery
 		if(tile instanceof TileEntityRefinery)
-			currenttip.addAll(addTanks(new FluidTank[]{ ((TileEntityTurretChem)tile).tank }));
+			currenttip.addAll(addTanks(((TileEntityRefinery)tile).master().tanks));
 
 		// Belljar
 		if(tile instanceof TileEntityBelljar)
-			currenttip.addAll(addTanks(new FluidTank[]{ ((TileEntityBelljar)tile).tank }));
+		{
+			TileEntityBelljar bellJar = (TileEntityBelljar)tile;
+			
+			if (bellJar.dummy > 0)
+			{
+				TileEntity te = accessor.getWorld().getTileEntity(tile.getPos().add(0, -bellJar.dummy, 0));
+				if(te instanceof TileEntityBelljar)
+					bellJar = (TileEntityBelljar)te;
+			}
+			
+			if (bellJar.renderActive && bellJar.renderGrowth > 0)
+			{
+				int value = Integer.valueOf(Math.round(bellJar.renderGrowth * 100));
+				try 
+				{
+					if (bellJar.getInventory().get(0) != null && bellJar.getInventory().get(1) != null)
+					{
+						IPlantHandler handler = bellJar.getCurrentPlantHandler();
+						ItemStack soil = bellJar.getInventory().get(0);
+						ItemStack seed = bellJar.getInventory().get(1);
+						ItemStack[] plants = handler.getOutput(seed, soil, bellJar);
+						
+						if (handler.isValid(seed) && handler.isCorrectSoil(seed, soil) && plants != null && plants.length > 0)
+							currenttip.add(String.format("%s: %d%%", plants[0].getDisplayName(), value));
+					}
+				}
+				catch (Exception e) 
+				{ 
+					currenttip.add(String.format("%s: %d%%", "Growing", value));
+				}
+			}
+			
+			currenttip.addAll(addTanks(new FluidTank[]{ bellJar.tank }));
+		}
 		
 		// Charging Station
 		if(tile instanceof TileEntityChargingStation)
 		{
-			TileEntityChargingStation charginStation = ((TileEntityChargingStation)tile);
+			TileEntityChargingStation charginStation = (TileEntityChargingStation)tile;
 			if(EnergyHelper.isFluxItem(charginStation.inventory.get(0)))
 			{
 				float maxCharge = EnergyHelper.getMaxEnergyStored(charginStation.inventory.get(0));
@@ -70,6 +110,12 @@ public class IEngineeringDataProvider extends WailaDataProvider
 		
         return currenttip;
     }
+
+	@Override
+	public List<String> getTail(ItemStack stack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config)
+	{
+		return currenttip;
+	}
 	
 	@Override
     public NBTTagCompound getNBT(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos)

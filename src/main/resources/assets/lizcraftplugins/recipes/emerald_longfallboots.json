@@ -1,0 +1,15 @@
+{
+    "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+			"item": "bopadditions:emerald_boots"
+		},
+        {
+			"item": "minecraft:wool",
+			"data": 32767
+		}
+    ],
+    "result": {
+        "item": "lizcraftplugins:emerald_longfallboots"
+    }
+}

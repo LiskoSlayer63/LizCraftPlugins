@@ -21,14 +21,31 @@ import net.minecraftforge.fluids.FluidTank;
 public class IPetroleumDataProvider extends WailaDataProvider
 {
 	@Override
+	public List<String> getHead(ItemStack stack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config)
+	{
+		return currenttip;
+	}
+	
+	@Override
 	public List<String> getBody(ItemStack stack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config)
     {
-		currenttip.add(accessor.getNBTData().toString());
+		//currenttip.add(accessor.getNBTData().toString());
 		TileEntity tile = accessor.getTileEntity();
 		
 		// Auto Lubricator
 		if(tile instanceof TileEntityAutoLubricator)
-			currenttip.addAll(addTanks(new FluidTank[]{ ((TileEntityAutoLubricator)tile).tank }));
+		{
+			TileEntityAutoLubricator tEntity = (TileEntityAutoLubricator)tile;
+			
+			if (tEntity.dummy > 0)
+			{
+				TileEntity te = accessor.getWorld().getTileEntity(tile.getPos().add(0, -tEntity.dummy, 0));
+				if(te instanceof TileEntityAutoLubricator)
+					tEntity = (TileEntityAutoLubricator)te;
+			}
+			
+			currenttip.addAll(addTanks(new FluidTank[]{ tEntity.tank }));
+		}
 
 		// Portable Generator
 		if(tile instanceof TileEntityGasGenerator)
@@ -54,8 +71,15 @@ public class IPetroleumDataProvider extends WailaDataProvider
 
 			currenttip.add("");
 		}
+		
         return currenttip;
     }
+
+	@Override
+	public List<String> getTail(ItemStack stack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config)
+	{
+		return currenttip;
+	}
 	
 	@Override
     public NBTTagCompound getNBT(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos)

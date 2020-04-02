@@ -21,11 +21,25 @@ import net.minecraftforge.fluids.FluidTank;
 public abstract class WailaDataProvider implements IWailaDataProvider 
 {
 	@Override
+	public List<String> getWailaHead(ItemStack stack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config)
+    {
+		return getHead(stack, currenttip, accessor, config);
+    }
+	public abstract List<String> getHead(ItemStack stack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config);
+	
+	@Override
 	public List<String> getWailaBody(ItemStack stack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config)
     {
 		return getBody(stack, currenttip, accessor, config);
     }
 	public abstract List<String> getBody(ItemStack stack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config);
+	
+	@Override
+	public List<String> getWailaTail(ItemStack stack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config)
+	{
+		return getTail(stack, currenttip, accessor, config);
+	}
+	public abstract List<String> getTail(ItemStack stack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config);
 	
 	@Override
 	public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos)

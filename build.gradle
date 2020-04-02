@@ -18,11 +18,11 @@ repositories {
 }
 
 group= "liznet.lizcraftplugins"
-version = "0.1.1"
+version = "0.1.3"
 archivesBaseName = "LizCraftPlugins"
 
 minecraft {
-    version = "1.12.2-14.23.5.2768"
+    version = "1.12.2-14.23.5.2847"
     runDir = "run"
     mappings = "stable_39"
 }
@@ -31,7 +31,10 @@ dependencies {
 	deobfCompile "mcp.mobius.waila:Hwyla:1.8.26-B41_1.12.2"
     deobfCompile "blusunrize:ImmersiveEngineering:0.12-+"
     compile files("libs/ImmersivePetroleum.jar")
-    compile files("libs/ImmersiveTech.jar")
+    compile files("libs/ImmersiveTechnology.jar")
+    compile files("libs/GrappleMod.jar")
+    compile files("libs/BoPAdditions.jar")
+    compile files("libs/BiomesOPlenty.jar")
 }
 
 processResources
