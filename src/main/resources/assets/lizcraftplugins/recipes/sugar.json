@@ -1,0 +1,17 @@
+{
+    "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+			"type": "forge:ore_dict",
+			"ore": "toolPestleandmortar"
+		},
+        {
+			"type": "forge:ore_dict",
+			"ore": "sugarcane"
+		}
+    ],
+    "result": {
+        "item": "minecraft:sugar",
+		"count": 2
+    }
+}

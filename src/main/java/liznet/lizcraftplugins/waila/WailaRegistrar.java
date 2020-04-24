@@ -25,11 +25,11 @@ public class WailaRegistrar
 	        	registrar.registerBodyProvider(provider, TileEntity.class);
 	        	registrar.registerTailProvider(provider, TileEntity.class);
 	        	
-	            CLogger.info("Loaded addon for Immersive Engineering");
+	            CLogger.info("Loaded Waila addon for Immersive Engineering");
 	        }
 	        catch (Exception e) 
 	        {
-	            CLogger.error("Error while loading addon for Immersive Engineering");
+	            CLogger.error("Error while loading Waila addon for Immersive Engineering");
 	            e.printStackTrace(System.err);
 	        }
 	   	}
@@ -47,11 +47,11 @@ public class WailaRegistrar
 	        	registrar.registerBodyProvider(eProvider, Entity.class);
 	        	registrar.registerTailProvider(eProvider, Entity.class);
 	        	
-	            CLogger.info("Loaded addon for Immersive Petroleum");
+	            CLogger.info("Loaded Waila addon for Immersive Petroleum");
 	        }
 	        catch (Exception e) 
 	        {
-	            CLogger.error("Error while loading addon for Immersive Petroleum");
+	            CLogger.error("Error while loading Waila addon for Immersive Petroleum");
 	            e.printStackTrace(System.err);
 	        }
 	   	}
@@ -64,11 +64,11 @@ public class WailaRegistrar
 	        	registrar.registerBodyProvider(provider, TileEntity.class);
 	        	registrar.registerTailProvider(provider, TileEntity.class);
 	        	
-	            CLogger.info("Loaded addon for Immersive Technology");
+	            CLogger.info("Loaded Waila addon for Immersive Technology");
 	        }
 	        catch (Exception e) 
 	        {
-	            CLogger.error("Error while loading addon for Immersive Technology");
+	            CLogger.error("Error while loading Waila addon for Immersive Technology");
 	            e.printStackTrace(System.err);
 	        }
 	   	}

@@ -1,0 +1,29 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "LSL",
+    "UPU",
+    "LSL"
+  ],
+  "key": {
+    "L": {
+      "type": "forge:ore_dict",
+      "ore": "dustLead"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "dustSulfur"
+    },
+    "U": {
+      "type": "forge:ore_dict",
+      "ore": "dustUranium"
+    },
+    "P": {
+      "type": "forge:ore_dict",
+      "ore": "dustPlutonium"
+    }
+  },
+  "result": {
+    "item": "lizcraftplugins:unstable_dust"
+  }
+}

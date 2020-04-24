@@ -7,12 +7,25 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = LizCraftPlugins.modId, name = LizCraftPlugins.name, version = LizCraftPlugins.version, dependencies = "after:bopadditions", acceptedMinecraftVersions = "[1.12.2]", acceptableRemoteVersions = "*")
+@Mod(
+		modid = LizCraftPlugins.modId, 
+		name = LizCraftPlugins.name, 
+		version = LizCraftPlugins.version, 
+		dependencies = 
+			"after:mutantbeasts;" + 
+			"after:bopadditions;" + 
+			"after:immersiveengineering;" +
+			"after:immersivepetroleum;" +
+			"after:immersivetech;" +
+			"after:adventurersamulets;" +
+			"after:waila;",
+		acceptedMinecraftVersions = "[1.12.2]"
+	)
 public class LizCraftPlugins 
 {
 	public static final String modId = "lizcraftplugins";
 	public static final String name = "LizCraft Plugins";
-	public static final String version = "0.1.3";
+	public static final String version = "0.1.7";
 
 	@Mod.Instance(LizCraftPlugins.modId)
 	public static LizCraftPlugins instance;

@@ -18,7 +18,7 @@ repositories {
 }
 
 group= "liznet.lizcraftplugins"
-version = "0.1.3"
+version = "0.1.7"
 archivesBaseName = "LizCraftPlugins"
 
 minecraft {
@@ -32,9 +32,12 @@ dependencies {
     deobfCompile "blusunrize:ImmersiveEngineering:0.12-+"
     compile files("libs/ImmersivePetroleum.jar")
     compile files("libs/ImmersiveTechnology.jar")
+    compile files("libs/ImmersivePosts.jar")
     compile files("libs/GrappleMod.jar")
     compile files("libs/BoPAdditions.jar")
     compile files("libs/BiomesOPlenty.jar")
+    compile files("libs/JustEnoughItems.jar")
+    compile files("libs/MutantBeasts.jar")
 }
 
 processResources

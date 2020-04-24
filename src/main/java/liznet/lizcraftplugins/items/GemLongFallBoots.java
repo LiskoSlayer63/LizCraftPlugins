@@ -11,6 +11,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -38,7 +39,7 @@ public class GemLongFallBoots extends LongFallBoots implements ICustomEnchantCol
 	@Override
     public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
-      tooltip.add("Crafted by using §o" + I18n.format(new StringBuilder().append("item.boots").append(this.gemName.substring(0, 1).toUpperCase()).append(this.gemName.substring(1)).append(".name").toString(), new Object[0]));
+      tooltip.add("Crafted by using " + TextFormatting.AQUA + I18n.format(new StringBuilder().append("item.boots").append(this.gemName.substring(0, 1).toUpperCase()).append(this.gemName.substring(1)).append(".name").toString(), new Object[0]));
       //tooltip.add("Cancels fall damage when worn");
       super.addInformation(stack, worldIn, tooltip, flagIn);
     }

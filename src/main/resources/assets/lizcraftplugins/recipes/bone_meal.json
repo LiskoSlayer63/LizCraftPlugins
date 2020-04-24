@@ -1,0 +1,18 @@
+{
+    "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+			"type": "forge:ore_dict",
+			"ore": "toolPestleandmortar"
+		},
+        {
+			"item": "minecraft:skull",
+			"data": 0
+		}
+    ],
+    "result": {
+        "item": "minecraft:dye",
+		"data": 15,
+		"count": 2
+    }
+}
