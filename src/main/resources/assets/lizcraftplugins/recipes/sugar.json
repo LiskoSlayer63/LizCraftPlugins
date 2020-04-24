@@ -3,7 +3,7 @@
     "ingredients": [
         {
 			"type": "forge:ore_dict",
-			"ore": "toolPestleandmortar"
+			"ore": "toolMortarandpestle"
 		},
         {
 			"type": "forge:ore_dict",
