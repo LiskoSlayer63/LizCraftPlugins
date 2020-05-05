@@ -3,7 +3,7 @@
   "modid": "lizcraftplugins",
   "name": "LizCraft Plugins",
   "description": "Various tweaks and fixes mainly for LizCraft server.",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "mcversion": "1.12.2",
   "authorList": ["LizNet", "LiskoSlayer63"]
 }

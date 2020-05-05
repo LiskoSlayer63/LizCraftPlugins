@@ -1,6 +1,7 @@
 package liznet.lizcraftplugins;
 
 import liznet.lizcraftplugins.proxy.CommonProxy;
+import net.minecraft.init.Items;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -18,14 +19,16 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 			"after:immersivepetroleum;" +
 			"after:immersivetech;" +
 			"after:adventurersamulets;" +
-			"after:waila;",
+			"after:waila;" + 
+			"after:harvestcraft;" + 
+			"after:quark;",
 		acceptedMinecraftVersions = "[1.12.2]"
 	)
 public class LizCraftPlugins 
 {
 	public static final String modId = "lizcraftplugins";
 	public static final String name = "LizCraft Plugins";
-	public static final String version = "0.1.7";
+	public static final String version = "0.1.8";
 
 	@Mod.Instance(LizCraftPlugins.modId)
 	public static LizCraftPlugins instance;

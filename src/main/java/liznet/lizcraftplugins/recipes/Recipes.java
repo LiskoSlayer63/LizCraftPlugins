@@ -32,6 +32,9 @@ public class Recipes {
 		
 		if (Loader.isModLoaded("immersiveengineering"))
 			IEngineeringRecipes.init();
+		
+		if (Loader.isModLoaded("harvestcraft"))
+			HarvestcraftRecipes.init();
 	}
 	
 	public static void postInit()
@@ -124,18 +127,7 @@ public class Recipes {
 
 		return colorRecipe.setRegistryName(group);
 	}
-	
 
-	/**
-	 * Currently not used but it does work.
-	 * 
-	 * has built in unit test
-	 * 
-	 * @param input
-	 * @param ingredient
-	 * @param output
-	 * @return
-	 */
 	public static BrewingRecipe addBrewingRecipe(ItemStack input, ItemStack ingredient, ItemStack output) {
 	  if (input.isEmpty() || input.getItem() == null) {
 	    return null;

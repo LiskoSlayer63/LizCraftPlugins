@@ -18,7 +18,7 @@ repositories {
 }
 
 group= "liznet.lizcraftplugins"
-version = "0.1.7"
+version = "0.1.8"
 archivesBaseName = "LizCraftPlugins"
 
 minecraft {
@@ -38,6 +38,9 @@ dependencies {
     compile files("libs/BiomesOPlenty.jar")
     compile files("libs/JustEnoughItems.jar")
     compile files("libs/MutantBeasts.jar")
+    compile files("libs/AutoRegLib.jar")
+    compile files("libs/PamsHarvestCraft.jar")
+    compile files("libs/Quark.jar")
 }
 
 processResources
