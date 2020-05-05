@@ -7,6 +7,7 @@ import liznet.lizcraftplugins.LizCraftPlugins;
 import liznet.lizcraftplugins.items.Items;
 import liznet.lizcraftplugins.recipes.Recipes;
 import liznet.lizcraftplugins.waila.WailaRegistrar;
+import liznet.lizcraftplugins.permissions.Permissions;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.math.RayTraceResult;
@@ -15,6 +16,9 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber(modid=LizCraftPlugins.modId)
 public class CommonProxy
@@ -29,6 +33,7 @@ public class CommonProxy
 		Items.init();
 		Recipes.init();
 		WailaRegistrar.init();
+		Permissions.Init();
 	}
 	
 	public void postInit() 
@@ -76,4 +81,28 @@ public class CommonProxy
  	{
  		Recipes.onRegisterRecipes(event.getRegistry());
  	}
+
+ 	@SideOnly(Side.SERVER)
+ 	@SubscribeEvent(priority = EventPriority.LOWEST)
+ 	public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event)
+	{
+		if (event.player != null)
+			Permissions.checkPlayer(event.player);
+	}
+ 	
+ 	@SideOnly(Side.SERVER)
+ 	@SubscribeEvent(priority = EventPriority.LOWEST)
+ 	public static void onPlayerDimensionChanged(PlayerEvent.PlayerChangedDimensionEvent event)
+	{
+		if (event.player != null)
+			Permissions.checkPlayer(event.player);
+	}
+ 	
+ 	@SideOnly(Side.SERVER)
+ 	@SubscribeEvent(priority = EventPriority.LOWEST)
+ 	public static void onPlayerDimensionChanged(PlayerEvent.PlayerRespawnEvent event)
+	{
+		if (event.player != null)
+			Permissions.checkPlayer(event.player);
+	}
 }

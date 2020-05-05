@@ -78,7 +78,7 @@ public class Recipes {
 	 			replaceRecipe(modRegistry, group, get9x9ColorRecipe(group, recipe.getRecipeOutput(), "blockTerracotta"));
  			
  			if (group.toString().contains("stained_glass") && !group.toString().contains("pane"))
-	 			replaceRecipe(modRegistry, group, get9x9ColorRecipe(group, recipe.getRecipeOutput(), "blockGlass"));
+	 			replaceRecipe(modRegistry, group, get9x9ColorRecipe(group, new ItemStack(recipe.getRecipeOutput().getItem(), 8, recipe.getRecipeOutput().getItemDamage()), "blockGlass"));
  			
  			if (group.toString().contains("bed_from_white_bed"))
 	 			replaceRecipe(modRegistry, group, getShapelessColorRecipe(group, recipe.getRecipeOutput(), new ItemStack(net.minecraft.init.Items.BED, 1, OreDictionary.WILDCARD_VALUE)));

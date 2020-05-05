@@ -83,6 +83,7 @@ public class UnstablePotionSplash extends ItemSplashPotion {
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
 	public String getItemStackDisplayName(ItemStack stack)
     {
 		return I18n.format(getTranslationKey() + ".name");
